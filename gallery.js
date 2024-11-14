@@ -1,12 +1,30 @@
 let mCurrentIndex = 0 // Tracks the current image index
 let mImages = [] // Array to hold GalleryImage objects
-const mUrl = 'https://your-json-url.com' // Replace with actual JSON URL
+const mUrl = 'https://www.npoint.io/docs/a1386ba253a4d952169a' // Replace with actual JSON URL
 const mWaitTime = 5000 // Timer interval in milliseconds
 
 $(document).ready(() => {
   $('.details').hide() // Hide details initially
 
-  // Call a function here to start the timer for the slideshow
+  let seconds = 0;
+let intervalId;
+
+function startTimer() {
+  intervalId = setInterval(() => {
+    seconds++;
+    document.getElementById("timer").innerText = seconds;
+  }, 5000); // 5000 milliseconds = 5 seconds
+}
+
+function stopTimer() {
+  clearInterval(intervalId);
+}
+
+function resetTimer() {
+  seconds = 0;
+  document.getElementById("timer").innerText = seconds;
+  clearInterval(intervalId);
+}
 
   // Select the moreIndicator button and add a click event to:
   // - toggle the rotation classes (rot90 and rot270)
